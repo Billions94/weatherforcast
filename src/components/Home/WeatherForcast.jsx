@@ -1,9 +1,11 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { addToFavAction } from "../../redux/actions";
 import { format } from 'date-fns'
 
 const WeatherForcast = () => {
 
     const { data: {data} } = useSelector(state => state)
+    const addToFavorite = useDispatch()
     console.log('i am the data ', data)
 
   return (
@@ -79,12 +81,10 @@ const WeatherForcast = () => {
     </div>
     <div className="d-flex location-container">
       <button className="location-button">
-        {" "}
         <i data-feather="map-pin" />
         <span>{data.name}</span>
       </button>
-      <button className="favorite-btn ml-2">
-        {" "}
+      <button onClick={(e) => addToFavorite(addToFavAction(data))} className="favorite-btn ml-2">
         <i data-feather="map-pin" />
         <span>★</span>
       </button>

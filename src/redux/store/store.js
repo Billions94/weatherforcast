@@ -4,11 +4,15 @@ import storage from "redux-persist/lib/storage/session";
 import { encryptTransform } from "redux-persist-transform-encrypt";
 import thunk from "redux-thunk";
 import dataReducer from "../reducers/dataReducer";
+import favoritesReducer from "../reducers/favoriteReducer";
 
 const allCompose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose 
 
 export const initialState = {
   data: {},
+  addFavorite: {
+      favorites: []
+  }
 };
 
 const ghost = process.env.REACT_APP_SECRET_KEY;
@@ -24,7 +28,8 @@ const persisConfig = {
 };
 
 const allReducers = combineReducers({
-    data: dataReducer
+    data: dataReducer,
+    addFavorite: favoritesReducer
 })
 
 const persistedReducer = persistReducer(persisConfig, allReducers)

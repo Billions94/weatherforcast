@@ -45,12 +45,20 @@ body {
 .container {
   border-radius: 25px;
   -webkit-box-shadow: 0 0 70px -10px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 0 70px -10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 70px -10px rgba(0, 0, 0, 0.2);
   background-color: #222831;
   color: #ffffff;
   height: 396px;
   width: 650px !important;
 }
+
+.containerMod {
+    border-radius: 25px;
+    background-color: transparent;
+    color: #ffffff;
+    height: 396px;
+    width: 650px !important;
+  }
 
 .weather-side {
   position: relative;

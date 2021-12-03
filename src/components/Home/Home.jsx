@@ -4,6 +4,7 @@ import { useEffect } from "react"
 import { useSelector } from "react-redux";
 import "./styles.css";
 import WeatherForcast from "./WeatherForcast";
+import Favorite from "./Favorite";
 
 const Home = () => {
 
@@ -40,11 +41,11 @@ const Home = () => {
           </div>
         </Col>
       </Row>
-      {/* <Row className="justify-content-center mt-3">
-        <Col md={6}>
-          <Chart />
+      <Row className="justify-content-center mt-5">
+        <Col md={10}>
+          <Favorite />
         </Col>
-        <Col md={4}>
+        <Col md={4} className='mt-5'>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum quam
           dolor, obcaecati placeat rerum suscipit odit deleniti magni commodi. A
           cumque vero, animi eligendi odit tempore? Itaque dicta aut esse. Lorem
@@ -58,7 +59,7 @@ const Home = () => {
           obcaecati placeat rerum suscipit odit deleniti magni commodi. A cumque
           vero, animi eligendi odit tempore? Itaque dicta aut esse.
         </Col>
-      </Row> */}
+      </Row>
     </div>
   );
 };

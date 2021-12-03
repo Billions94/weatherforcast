@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+body {
+  background: url(https://www.daljir.com/wp-content/uploads/2020/01/cililo.png);
+  margin: auto;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

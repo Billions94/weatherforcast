@@ -1,6 +1,5 @@
 import { Row, Col } from "react-bootstrap";
 import Search from "./Search";
-import { useEffect } from "react"
 import { useSelector } from "react-redux";
 import "./styles.css";
 import WeatherForcast from "./WeatherForcast";

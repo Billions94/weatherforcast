@@ -1,12 +1,40 @@
 import { useSelector, useDispatch } from "react-redux";
 import { addToFavAction } from "../../redux/actions";
 import { format } from 'date-fns'
+import { useState, useEffect } from "react"
+import { removeFromFavAction } from "../../redux/actions";
 
 const WeatherForcast = () => {
 
-    const { data: {data} } = useSelector(state => state)
-    const addToFavorite = useDispatch()
+    const { data: { data } } = useSelector(state => state)
     console.log('i am the data ', data)
+
+    const { addFavorite: { favorites } } = useSelector(state => state)
+
+    const addToFavorite = useDispatch()
+    const removeFromFavorite = useDispatch()
+
+    const [selected, setSelected] = useState(false)
+
+    const addToFav = (data) => {
+      setSelected(true)
+      addToFavorite(addToFavAction(data))
+    }
+
+    const removeFromFav = (data) => {
+      removeFromFavorite(removeFromFavAction(data.id))
+      setSelected(false)
+    }
+
+    useEffect(() => {
+        if(favorites === undefined ? null : favorites.map(f => f.id).indexOf(data.id) !== -1){
+          setSelected(true)
+        } else {
+          setSelected(false)
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[selected])
+
 
   return (
 <div className="container ">
@@ -160,10 +188,18 @@ const WeatherForcast = () => {
         <i data-feather="map-pin" />
         <span>{data.name}</span>
       </button>
-      <button onClick={(e) => addToFavorite(addToFavAction(data))} className="favorite-btn ml-2">
-        <i data-feather="map-pin" />
-        <span>★</span>
-      </button>
+      <div>
+        { selected === false ?
+          <button onClick={(e) => addToFav(data)} className="favorite-btn ml-2">
+              <i data-feather="map-pin" />
+              <span>★</span>
+          </button> :
+          <button onClick={(e) => removeFromFav(data)} className="favorite-btn ml-2">
+              <i data-feather="map-pin" />
+              <span>✕</span>
+          </button> 
+        }
+      </div>
     </div>
   </div>
   </>

@@ -53,7 +53,8 @@ body {
   background-color: transparent;
   color: #ffffff;
   height: 396px;
-  width: 650px !important;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .weather-side {
